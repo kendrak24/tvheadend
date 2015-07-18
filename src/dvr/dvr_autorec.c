@@ -132,6 +132,7 @@ autorec_cmp(dvr_autorec_entry_t *dae, epg_broadcast_t *e)
     localtime_r(&e->start, &ev_time);
     a_time.tm_min = dae->dae_approx_time % 60;
     a_time.tm_hour = dae->dae_approx_time / 60;
+    // TODO: Either create a proper solution for this hardcoded "Start around" value of 900 seconds, or up it to 5400 seconds (90 minutes). 20140917 //DL 
     if(abs(mktime(&a_time) - mktime(&ev_time)) > 900)
       return 0;
   }
